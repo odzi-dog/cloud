@@ -1,0 +1,19 @@
+version: v1
+plugins:
+  # 
+  # Typescript
+  # 
+
+  # > Nest-js related generated output
+  - remote: buf.build/stephenh/plugins/ts-proto
+    out: ../generated/typescript/backend
+    opt:
+    - nestJs=true
+
+  # > Clients output
+  - name: es
+    out: ../generated/typescript/client
+    opt: target=ts
+  - name: connect-web
+    out: ../generated/typescript/client
+    opt: target=ts
