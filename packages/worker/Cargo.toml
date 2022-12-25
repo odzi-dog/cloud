@@ -1,0 +1,17 @@
+[package]
+name = "worker"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "server"
+path = "src/server.rs"
+
+[dependencies]
+v8 = "0.60.0"
+tonic = "0.8"
+prost = "0.11"
+tokio = { version = "1.23.0", features = ["full"] }
+
+[build-dependencies]
+tonic-build = "0.8"

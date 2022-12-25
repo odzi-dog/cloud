@@ -1,48 +1,17 @@
 syntax = "proto3";
+package helloworld;
 
-package v1;
-
-// PetType represents the different types of pets in the pet store.
-enum PetType {
-  PET_TYPE_UNSPECIFIED = 0;
-  PET_TYPE_CAT = 1;
-  PET_TYPE_DOG = 2;
-  PET_TYPE_SNAKE = 3;
-  PET_TYPE_HAMSTER = 4;
+service Greeter {
+    // Our SayHello rpc accepts HelloRequests and returns HelloReplies
+    rpc SayHello (HelloRequest) returns (HelloReply);
 }
 
-// Pet represents a pet in the pet store.
-message Pet {
-  PetType pet_type = 1;
-  string pet_id = 2;
-  string name = 3;
+message HelloRequest {
+    // Request message contains the name to be greeted
+    string name = 1;
 }
 
-message GetPetRequest {
-  string pet_id = 1;
-}
-
-message GetPetResponse {
-  Pet pet = 1;
-}
-
-message PutPetRequest {
-  PetType pet_type = 1;
-  string name = 2;
-}
-
-message PutPetResponse {
-  Pet pet = 1;
-}
-
-message DeletePetRequest {
-  string petID = 1;
-}
-
-message DeletePetResponse {}
-
-service PetStore {
-  rpc GetPet(GetPetRequest) returns (GetPetResponse) {}
-  rpc PutPet(PutPetRequest) returns (PutPetResponse) {}
-  rpc DeletePet(DeletePetRequest) returns (DeletePetResponse) {}
+message HelloReply {
+    // Reply contains the greeting message
+    string message = 1;
 }
